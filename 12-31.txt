@@ -1,0 +1,23 @@
+<addOperator> ::= "*" | "/"
+<multiplyOperator> ::= "+" | "-" 
+<expression> ::= <item> <addOperator> <item>
+<item> ::= <item2> <multiplyOperator> <item2>
+<item2> ::= <number> | <expression>
+// 上面不对
+
+1+2*3
+  +
+1   *
+   2  3
+
+1+2+3
+   +
+ +   3
+1 2
+
+<multiplicativeExpression> ::= <number> | <multiplicativeExpression> * <number> | <multiplicativeExpression> / <number>
+<additiveExpression> ::= <multiplicativeExpression> | <additiveExpression> + <multiplicativeExpression> | <additiveExpression> - <multiplicativeExpression>
+// && 运算
+<logicAndExpression> ::= <additiveExpression> | <logicAndExpression> && <additiveExpression>
+<expression> ::= <logicAndExpression>
+
